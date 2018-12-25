@@ -1,18 +1,43 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <section class="window home">
+    <div class="window-content">
+      <div class="pane-group">
+        <home-sidebar :collections="collections"/>
+        <div class="pane">
+          <home-content/>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { mapState, mapMutations } from "vuex";
+
+import HomeSidebar from "@/components/HomeSidebar.vue";
+import HomeContent from "@/components/HomeContent.vue";
 
 export default {
-  name: 'home',
+  name: "home",
   components: {
-    HelloWorld
+    HomeSidebar,
+    HomeContent
+  },
+  data() {
+    return {
+      isShowNewCommand: false
+    };
+  },
+  methods: {
+    showNewCommand() {
+      this.isShowNewCommand = true;
+    }
+  },
+  computed: {
+    ...mapState(["collections"])
   }
-}
+};
 </script>
+
+<style lang="scss" scoped>
+</style>

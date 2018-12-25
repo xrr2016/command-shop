@@ -1,0 +1,7 @@
+.btn {
+  cursor: pointer;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
